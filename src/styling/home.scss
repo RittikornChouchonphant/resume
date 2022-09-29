@@ -1,0 +1,539 @@
+@font-face {
+    font-family: 'SequelSans';
+    src: url(../../public/fonts/SequelSans.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'SequelSansDisp';
+    src: url(../../public/fonts/SequelSansDisp.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'SFPro';
+    src: url(../../public/fonts/SF-Pro-Display-Thin.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'SFProBold';
+    src: url(../../public/fonts/SF-Pro-Display-Bold.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'SFProLight';
+    src: url(../../public/fonts/SF-Pro-Text-Ultralight.otf) format('opentype');
+}
+
+:root {
+    --page-width: 2560px;
+    --page-height: 2000px;
+    --scroll-height: 1428px;
+    --curve: 40;
+    --surface-color: #ffffff;
+    --parallaxPadding: 300px
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.body::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+}
+
+.homemaster {
+    width: 100%;
+    padding: 0;
+    background: url(../../public/spiral.jpg);
+    background-position: 0px -500px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.customnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 36em;
+    padding-top: 3em;
+    z-index: 1;
+
+    a {
+        cursor: pointer;
+    }
+}
+
+.customnav.fade {
+    opacity: 0%;
+    animation: fader 0.4s ease-in-out;
+}
+
+a,
+p {
+    font-family: 'SFPro';
+    font-size: 1.6em;
+    color: #f7f7ff;
+    width: fit-content;
+    margin: 0;
+}
+
+h3 {
+    font-family: 'SFProLight';
+    font-size: 1vw;
+    color: #f7f7ff;
+    margin: 0;
+}
+
+.typewriter {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+}
+
+.typewriter h3 {
+    width: 100%;
+    overflow: hidden;
+    border-right: .15em solid orange;
+    white-space: nowrap;
+    margin: 0 auto;
+    animation:
+        typing 3.0s steps(40, end),
+        blink-caret .7s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: orange;
+    }
+}
+
+.fromLeft {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.fromLeft::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    background: #ffffff;
+    transition: width .3s;
+}
+
+.fromLeft:hover::after {
+    width: 100%;
+    //transition: width .3s;
+}
+
+.spotlight {
+    width: 100%;
+    padding-left: 10em;
+    padding-top: 10em;
+    overflow: hidden;
+
+    p {
+        font-family: 'SFProBold';
+        font-size: 10vw;
+        position: relative;
+        overflow: hidden;
+        display: block;
+    }
+}
+
+.spotlight p::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(72, 115, 255);
+    animation: a-ltr-after 1s cubic-bezier(.77, 0, .18, 1) forwards;
+    transform: translateX(0);
+}
+
+.spotlight p:nth-of-type(1)::after {
+    animation-delay: 0s;
+}
+
+.spotlight p:nth-of-type(2)::after {
+    animation-delay: 0.25s;
+}
+
+.spotlight p:nth-of-type(3)::after {
+    animation-delay: 0.5s;
+}
+
+.revealnav {
+    width: fit-content;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+
+    p {
+        font-size: 5em;
+        color: #000000;
+        animation: slidein 4s;
+    }
+
+    a {
+        animation: slideinshort 3s;
+    }
+}
+
+.revealbox {
+    margin-bottom: 5em;
+}
+
+.revealbox.active {
+    width: fit-content;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+
+    p {
+        font-size: 4vw;
+        color: #8d89ee;
+        animation: slidein 3s ease-in-out forwards;
+    }
+}
+
+.box {
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f7ff;
+    overflow: hidden;
+}
+
+.box2 {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagemaster {
+    position: absolute;
+    border: 1px solid green;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.parallaxmaster {
+    margin-top: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+
+    p {
+        font-family: 'SFProBold';
+        font-size: 10vw;
+        color: #f7f7ff;
+    }
+}
+
+.parallaxaddon {
+    position: absolute;
+    margin-top: 100%;
+    text-align: center;
+    animation: removeon .9s cubic-bezier(.77, 0, .18, 1) forwards;
+
+    p {
+        color: #f7f7ff;
+        font-size: 1.5vw;
+    }
+
+    @keyframes removeon {
+        0% {
+            margin-top: 40%;
+        }
+
+        100% {
+            margin-top: 100%;
+        }
+    }
+}
+
+.parallaxaddon.active {
+    margin-top: 40%;
+    animation: addon .9s cubic-bezier(.77, 0, .18, 1) forwards;
+
+    @keyframes addon {
+        0% {
+            margin-top: 100%;
+        }
+
+        100% {
+            margin-top: 40%;
+        }
+    }
+}
+
+.box3 {
+    width: 100%;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        font-family: 'SFPro';
+        font-size: 13em;
+        position: relative;
+        overflow: hidden;
+        display: block;
+    }
+}
+
+.logobox {
+    width: 85%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 6rem;
+}
+
+.logocard {
+    position: relative;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 0.8rem;
+    box-shadow: 0.15rem 0.2rem 0.2rem -0.02rem rgba(0, 0, 0, 0.1);
+    height: 32em;
+    overflow: hidden;
+}
+
+.cardoverlay {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    bottom: 6%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    transform: translateY(100%);
+    transition: .2s ease-in-out;
+}
+
+.cardheader {
+    position: relative;
+    width: fit-content;
+    transform: translateY(-100%);
+    transition: .2s ease-in-out;
+
+    a {
+        text-align: center;
+        color: #8d89ee;
+        font-family: 'SFProBold';
+        font-size: 1.2vw;
+        transition: font-size .2s ease-in-out;
+    }
+}
+
+.cardimgmaster {
+    height: 80%;
+    border: 0rem 0rem 0.8rem 0.8rem;
+    transition: height .2s ease-in-out;
+}
+
+.cardimg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carddesc {
+    padding: 1.9em 1.9em 2em 1.9em;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    background-color: var(--surface-color);
+
+    p {
+        color: #7f7f7f;
+        font-family: "SFPro";
+    }
+}
+
+.logocard:hover .cardoverlay {
+    transform: translateY(0);
+}
+
+.logocard:hover .cardheader {
+    transform: translateY(-180%);
+
+    a {
+        font-size: 2.5vw;
+    }
+}
+
+.logocard:hover .cardimgmaster {
+    height: 63%;
+    filter: blur(2px);
+}
+
+.pl {
+    color: #000000;
+    padding-right: var(--parallaxPadding);
+    animation: paraleft .3s ease-in-out;
+
+    @keyframes paraleft {
+        0% {
+            transform: translateX(300px);
+        }
+
+        100% {
+            transform: translateX(0px);
+        }
+    }
+}
+
+.pr {
+    color: #000000;
+    padding-left: var(--parallaxPadding);
+    animation: pararight .3s ease-in-out;
+
+    @keyframes pararight {
+        0% {
+            transform: translateX(-300px);
+        }
+
+        100% {
+            transform: translateX(0px);
+        }
+    }
+}
+
+.pl.active {
+    animation: textparaleft .4s ease-in-out;
+
+    @keyframes textparaleft {
+        0% {
+            transform: translateX(-300px);
+        }
+
+        100% {
+            transform: translateX(0px);
+        }
+    }
+}
+
+.pr.active {
+    animation: textpararight .4s ease-in-out;
+
+    @keyframes textpararight {
+        0% {
+            transform: translateX(300px);
+        }
+
+        100% {
+            transform: translateX(0px);
+        }
+    }
+}
+
+@keyframes fader {
+    0% {
+        opacity: 100%;
+    }
+
+    100% {
+        opacity: 0%;
+    }
+}
+
+@keyframes a-ltr-after {
+    0% {
+        transform: translateX(0)
+    }
+
+    100% {
+        transform: translateX(101%)
+    }
+}
+
+@keyframes a-ltr-before {
+    0% {
+        transform: translateX(0)
+    }
+
+    100% {
+        transform: translateX(200%)
+    }
+}
+
+@keyframes slidein {
+    0% {
+        margin-left: -1300px;
+    }
+
+    20% {
+        margin-left: -1300px;
+    }
+
+    35% {
+        margin-left: 0px;
+    }
+
+    100% {
+        margin-left: 0px;
+    }
+}
+
+@keyframes slideinshort {
+    0% {
+        margin-left: -120px;
+    }
+
+    20% {
+        margin-left: -120px;
+    }
+
+    35% {
+        margin-left: 0px;
+    }
+
+    100% {
+        margin-left: 0px;
+    }
+}
